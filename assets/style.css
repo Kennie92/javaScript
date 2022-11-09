@@ -79,6 +79,7 @@ section {
   box-shadow: -2px 0 4px hsl(0 4% 15% / 10%);
   transition: 0.3s;
   overflow-y: scroll;
+  border-radius: 6px;
 }
 
 .cart.active {
@@ -161,7 +162,8 @@ section {
 }
 
 .btn-buy:hover {
-  background: var(--text-color);
+  background: #333;
+  color:white;
 }
 
 #close-cart {

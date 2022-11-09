@@ -92,7 +92,7 @@ function loadApi() {
               </div>
               <div class="product-details">
               <h2 class="product-title">${productArray[i][0]}</h2>
-                  <span class="pPrice">${productArray[i][3]}$</span>
+                  <span class="pPrice">$${productArray[i][3]}</span>
                   <i class="bx bx-shopping-bag productBtn" "data-id="${productId}" onclick="pushCart(${productArray[i][5]})"></i>
                   </div>
                 </div>
@@ -139,3 +139,89 @@ closeCart.onclick = () => {
   cart.classList.remove("active");
 };
 
+
+
+
+const urlOneProduct = "https://fakestoreapi.com/products/1";
+const urlAllProducts = "https://fakestoreapi.com/products";
+const urlProductSix = "https://fakestoreapi.com/products/6";
+
+let data1 = fetch(urlOneProduct)
+  .then((response) => response.json()) // hÃ¤r blir Json-stringen till objekt
+  .then((json) => console.log(json));
+
+  let data2 = fetch(urlAllProducts)
+  .then((response) => response.json())
+  .then((json) => console.log(json));
+
+  let data3 = fetch(urlAllProducts)
+  .then((response) => response.json())
+  .then((json) => {
+    json.forEach(element => {
+    //   console.log(element)
+    });
+  });
+
+  fetch(urlAllProducts, {
+    method: "POST",
+    body: JSON.stringify({
+      title: "Baseball cap",
+      price: 20,
+      description: "A beautiful description about a baseball cap",
+      category: "men's clothing",
+      image: "https://images.pexels.com/photos/1124465/pexels-photo-1124465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      id: 21,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+
+    fetch("https://fakestoreapi.com/products/10",{
+            method:"PUT",
+            body:JSON.stringify(
+                {
+                    id:10,
+                    title:'Nike sneakers',
+                    price: 199.99,
+                    category:"men's clothing",
+                    description:'Description about some nike sneakers',
+                    image:'https://images.pexels.com/photos/4490019/pexels-photo-4490019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+                }
+            ),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+        })
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+
+            //  fetch("https:fakestoreapi.com/products/6",{
+            //      method:"DELETE",
+            //      body:JSON.stringify(
+            //          {
+            //              id:6,
+            //              title:'...',
+            //              price:'...',
+            //              category:'...',
+            //              description:'...',
+            //              image:'...'
+            //          }
+            //      ),
+            //      headers: {
+            //          "Content-type": "application/json; charset=UTF-8",
+            //        },
+            //  })
+            //      .then(res=>res.json())
+            //      .then(json=>console.log("deleted" + json))
+
+
+                
+                fetch('https:fakestoreapi.com/products/6', {
+             method: 'DELETE',
+            
+             })
+             .then(res=>res.json())
+             .then(json=>console.log("deleted product" + json));
