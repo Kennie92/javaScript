@@ -46,43 +46,6 @@ let data = fetch(url)
 
 console.log(localStorage)
 
-
-
-
-function pushCart(clickedId) {
-  cart.classList.add("active");
-  console.log(clickedId);
-
-  if (localStorage.length !== 0) {
-    Object.keys(localStorage).forEach(function (key) {
-      productObject = JSON.parse(localStorage.getItem(key));
-      completeProduct = productObject;
-
-      if (completeProduct[5] == clickedId) {
-        let cartPrice = document.createElement("p");
-        let cartTitle = document.createElement("p");
-        let cartImage = document.createElement("img");
-
-        createCart.appendChild(cartPrice);
-        createCart.appendChild(cartImage);
-        createCart.appendChild(cartTitle);
-
-        cartPrice.setAttribute("class", "cart-price")
-        cartTitle.setAttribute("class", "cart-title");
-        cartImage.setAttribute("src", completeProduct[2]);
-        cartImage.setAttribute("width", "75");
-        cartImage.setAttribute("height", "75");
-
-        cartTitle.innerHTML = completeProduct[0];
-        cartPrice.innerHTML = "$" + completeProduct[3];
-
-        console.log(cartPrice);
-        console.log(cartTitle);
-      }
-    })
-  }
-};
-
 function loadApi() {
   for (let i = 0; i < productArray.length; i++) {
     output += `
@@ -105,8 +68,56 @@ function loadApi() {
 let button = document.getElementsByClassName("bx bx-shopping-bag");
 
 
+function pushCart(transferClickedId) {
+  cart.classList.add("active");
+  console.log(transferClickedId);
 
-let createCart = document.querySelector(".createCart")
+  if (localStorage.length !== 0) {
+    Object.keys(localStorage).forEach(function (productKeys) {
+      productObject = JSON.parse(localStorage.getItem(productKeys));
+      completeProduct = productObject;
+
+      if (completeProduct[5] == transferClickedId) {
+        let cartTotal = document.createElement("p");
+        let cartTitle = document.createElement("p");
+        let cartImage = document.createElement("img");
+        let createCart = document.querySelector(".createCart")
+
+        createCart.appendChild(cartTotal);
+        createCart.appendChild(cartImage);
+        createCart.appendChild(cartTitle);
+
+        cartTotal.setAttribute("class", "cart-total")
+        cartTitle.setAttribute("class", "cart-title");
+        cartImage.setAttribute("src", completeProduct[2]);
+        cartImage.setAttribute("width", "75");
+        cartImage.setAttribute("height", "75");
+
+        cartTitle.innerHTML = completeProduct[0];
+        cartTotal.innerHTML = "$" + completeProduct[3];
+
+      
+        let cartObjects = document.getElementsByClassName('cart-total');
+        let sum = 0;
+
+        for (let i = 0; i < cartObjects.length; ++i) {
+            let product = cartObjects[i];  
+            let price = product.innerText;
+            // Get rid of the $ sign and convert it to int
+            sum += parseFloat(price.slice(1)); 
+         }
+      createCart = document.querySelector(".createCart");
+      document.getElementById('priceTotal').innerHTML = "Total: $" + (sum).toFixed(2);
+    }
+    })
+  }
+};
+
+
+
+
+
+
 
 
 let removeBtn = document.getElementById("removebutton").addEventListener('click', emptyCart);
@@ -179,16 +190,16 @@ let data1 = fetch(urlOneProduct)
     .then((response) => response.json())
     .then((json) => console.log(json));
 
-    fetch("https://fakestoreapi.com/products/10",{
+    fetch("https://fakestoreapi.com/products/6",{
             method:"PUT",
             body:JSON.stringify(
                 {
-                    id:10,
-                    title:'Nike sneakers',
-                    price: 199.99,
-                    category:"men's clothing",
-                    description:'Description about some nike sneakers',
-                    image:'https://images.pexels.com/photos/4490019/pexels-photo-4490019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+                    id: 6,
+                    title:'Solid Gold Petite Micropave',
+                    price: 168,
+                    category:"jewelery",
+                    description:'Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.',
+                    image:'https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg'
                 }
             ),
             headers: {
@@ -224,4 +235,4 @@ let data1 = fetch(urlOneProduct)
             
              })
              .then(res=>res.json())
-             .then(json=>console.log("deleted product" + json));
+             .then(json=>console.log("deleted product" , json));

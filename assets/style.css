@@ -73,7 +73,7 @@ section {
   top: 0;
   right: -100%;
   width: 360px;
-  max-height: 80vh;
+  max-height: 50vh;
   padding: 20px;
   background: #777;
   box-shadow: -2px 0 4px hsl(0 4% 15% / 10%);
