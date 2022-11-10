@@ -41,17 +41,17 @@ let data = fetch(url)
      
     }
     loadApi();
-    console.log(productArray)
+  
   });
 
-console.log(localStorage)
+
 
 function loadApi() {
   for (let i = 0; i < productArray.length; i++) {
     output += `
               <div class="card">
               <div class="card-image-box">
-              <img class="pImg" src="${productArray[i][2]}" alt="product image">
+              <img class="pImg" src="${productArray[i][2]}" alt="various products">
               </div>
               <div class="product-details">
               <h2 class="product-title">${productArray[i][0]}</h2>
@@ -62,7 +62,7 @@ function loadApi() {
           `;
   }
   shopContainer.innerHTML = output;
-  console.log(productArray);
+  
 };
 
 let button = document.getElementsByClassName("bx bx-shopping-bag");
@@ -70,7 +70,7 @@ let button = document.getElementsByClassName("bx bx-shopping-bag");
 
 function pushCart(transferClickedId) {
   cart.classList.add("active");
-  console.log(transferClickedId);
+ 
 
   if (localStorage.length !== 0) {
     Object.keys(localStorage).forEach(function (productKeys) {
@@ -158,7 +158,7 @@ const urlAllProducts = "https://fakestoreapi.com/products";
 const urlProductSix = "https://fakestoreapi.com/products/6";
 
 let data1 = fetch(urlOneProduct)
-  .then((response) => response.json()) // hÃ¤r blir Json-stringen till objekt
+  .then((response) => response.json()) 
   .then((json) => console.log(json));
 
   let data2 = fetch(urlAllProducts)
@@ -169,18 +169,18 @@ let data1 = fetch(urlOneProduct)
   .then((response) => response.json())
   .then((json) => {
     json.forEach(element => {
-    //   console.log(element)
+   
     });
   });
 
   fetch(urlAllProducts, {
     method: "POST",
     body: JSON.stringify({
-      title: "Baseball cap",
-      price: 20,
-      description: "A beautiful description about a baseball cap",
-      category: "men's clothing",
-      image: "https://images.pexels.com/photos/1124465/pexels-photo-1124465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      title: "Differente Shoes",
+      price: 36,
+      description: "Latest shoes from Differente",
+      category: "men's footwear",
+      image: "https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       id: 21,
     }),
     headers: {
