@@ -120,13 +120,14 @@ function pushCart(transferClickedId) {
 
 
 
-let removeBtn = document.getElementById("removebutton").addEventListener('click', emptyCart);
+let removeBtn = document.getElementById("deleteBtn").addEventListener('click', emptyCart);
 let buyBtn = document.getElementById("buyBtn").addEventListener('click', buyProducts);
 
 function emptyCart() {
-  removeCart = window.confirm("Are you sure you want to remove added products from your cart?");
-  if (removeCart) {
-    createCart.innerHTML = "";
+  removeItems = window.confirm("Are you sure you want to remove added products from your cart?");
+  if (removeItems) {
+    createCart = document.querySelector('.createCart').innerHTML = "";
+    cartTotal = document.getElementById('priceTotal').innerHTML = "Total: $0";
   }
 }
 

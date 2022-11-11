@@ -118,8 +118,8 @@ section {
 
 
 .cart-quantity {
-  border: 1px solid var(--text-color);
-  outline-color: var(--main-color);
+  border: 1px solid black;
+  outline-color: #777;
   width: 2.4rem;
   text-align: center;
   font-size: 1rem;
@@ -127,32 +127,21 @@ section {
 
 .cart-remove {
   font-size: 24px;
-  color: var(--main-color);
   cursor: pointer;
 }
 
-.total {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 1.5rem;
-  border-top: 1px solid var(--text-color);
-}
 
-.total-title {
-  font-size: 1rem;
-  font-weight: 600;
-}
 
-.total-price {
-  margin-left: 0.5rem;
-}
+
+
+
 
 .btn-buy {
   display: flex;
   margin: 1.5rem auto 0 auto;
   padding: 12px 20px;
   border: none;
-  color: var(--main-color);
+  color: black;
   background: red;
   font-size: 1rem;
   font-weight: 500;
@@ -169,7 +158,7 @@ section {
   top: 1rem;
   right: 0.8rem;
   font-size: 2rem;
-  color: var(--text-color);
+  color: black;
   cursor: pointer;
 }
 
